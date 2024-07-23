@@ -1,4 +1,4 @@
-import { TodoService } from './../todo.service';
+import { TodoService } from '../@service/todo.service';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
@@ -12,4 +12,16 @@ import { FormsModule } from '@angular/forms';
 export class HeaderComponent {
   constructor(private todoService: TodoService) {}
   task: string = '';
+
+  addTask() {
+    if (this.task.length > 0) {
+      this.todoService.todoList.push({
+        id: Date.now(),
+        taskName: this.task,
+        isCompleted: false,
+        isEdit: false,
+      });
+    }
+    this.task = '';
+  }
 }

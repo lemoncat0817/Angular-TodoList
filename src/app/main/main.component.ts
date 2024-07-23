@@ -1,4 +1,4 @@
-import { TodoService } from './../todo.service';
+import { TodoService } from '../@service/todo.service';
 import { Component } from '@angular/core';
 
 @Component({
@@ -6,9 +6,8 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './main.component.html',
-  styleUrl: './main.component.scss'
+  styleUrl: './main.component.scss',
 })
 export class MainComponent {
   constructor(private todoService: TodoService) {}
-
 }

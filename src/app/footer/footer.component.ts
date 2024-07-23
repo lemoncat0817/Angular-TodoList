@@ -1,4 +1,4 @@
-import { TodoService } from './../todo.service';
+import { TodoService } from '../@service/todo.service';
 import { Component } from '@angular/core';
 
 @Component({
