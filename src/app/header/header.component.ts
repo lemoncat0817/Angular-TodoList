@@ -22,6 +22,7 @@ export class HeaderComponent {
         isEdit: false,
       });
     }
+    this.todoService.saveToStorage();
     this.task = '';
   }
 }

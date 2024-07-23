@@ -11,4 +11,18 @@ export class TodoService {
   pages: number = 0;
   isSearch: boolean = false;
   keyword: string = '';
+
+  deleteTask(id: number) {
+    this.todoList = this.todoList.filter((todo) => todo.id !== id);
+    this.saveToStorage();
+  }
+
+  saveToStorage() {
+    localStorage.setItem('todoList', JSON.stringify(this.todoList));
+  }
+
+  loadFromStorage() {
+    this.todoList = JSON.parse(localStorage.getItem('todoList') || '[]');
+    return this.todoList;
+  }
 }
