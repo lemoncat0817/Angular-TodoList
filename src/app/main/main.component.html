@@ -1,67 +1,46 @@
 <div class="w-full h-[450px]">
   <div class="w-full h-[50px] flex justify-center items-center">
     <div
-      class="w-20 h-4/5 bg-blue-500 border-white border-solid border-2 rounded-lg text-center leading-[40px] text-lg text-white font-bold mx-2 cursor-pointer select-none hover:bg-blue-600 active:bg-blue-800"
-    >
+      class="w-20 h-4/5 bg-blue-500 border-white border-solid border-2 rounded-lg text-center leading-[40px] text-lg text-white font-bold mx-2 cursor-pointer select-none hover:bg-blue-600 active:bg-blue-800">
       全部
     </div>
     <div
-      class="w-20 h-4/5 bg-blue-500 border-white border-solid border-2 rounded-lg text-center leading-[40px] text-lg text-white font-bold mx-2 cursor-pointer select-none hover:bg-blue-600 active:bg-blue-800"
-    >
+      class="w-20 h-4/5 bg-blue-500 border-white border-solid border-2 rounded-lg text-center leading-[40px] text-lg text-white font-bold mx-2 cursor-pointer select-none hover:bg-blue-600 active:bg-blue-800">
       未完成
     </div>
     <div
-      class="w-20 h-4/5 bg-blue-500 border-white border-solid border-2 rounded-lg text-center leading-[40px] text-lg text-white font-bold mx-2 cursor-pointer select-none hover:bg-blue-600 active:bg-blue-800"
-    >
+      class="w-20 h-4/5 bg-blue-500 border-white border-solid border-2 rounded-lg text-center leading-[40px] text-lg text-white font-bold mx-2 cursor-pointer select-none hover:bg-blue-600 active:bg-blue-800">
       完成
     </div>
   </div>
   <div class="w-4/5 h-[400px] m-auto overflow-y-auto">
     @for( task of todoList; track task.id){
-    <div
-      v-for="item in taskList"
-      :key="item.id"
-      class="w-full bg-gray-300 border-2 border-white border-solid rounded-lg p-2 mb-2 flex justify-between items-center"
-    >
-      <input
-        v-model="item.isCompleted"
-        type="checkbox"
-        class="w-6 h-6 cursor-pointer"
-      />
+    <div v-for="item in taskList" :key="item.id"
+      class="w-full bg-gray-300 border-2 border-white border-solid rounded-lg p-2 mb-2 flex justify-between items-center">
+      <input [(ngModel)]="task.isCompleted" type="checkbox" class="w-6 h-6 cursor-pointer" />
       @if( !task.isEdit){
-      <p
-        class="sm:w-[300px] w-[100px] h-full text-xl font-bold text-blue-700 text-center break-all"
-        :class="{ 'line-through': item.isCompleted }"
-      >
+      <p class="sm:w-[300px] w-[100px] h-full text-xl font-bold text-blue-700 text-center break-all"
+        [class]="task.isCompleted? 'line-through' : ''">
         {{ task.taskName }}
       </p>
       }@else {
-      <input
-        placeholder="請輸入編輯內容"
-        [(ngModel)]="editTaskName"
-        class="text-center sm:w-[300px] text-blue-800 font-bold border-white border-2 border-solid rounded-lg w-[100px]"
-      />
+      <input placeholder="請輸入編輯內容" [(ngModel)]="editTaskName"
+        class="text-center sm:w-[300px] text-blue-800 font-bold border-white border-2 border-solid rounded-lg w-[100px]" />
       }
       <div>
         @if(!task.isEdit){
-        <button
-          (click)="editTask(task)"
-          class="sm:w-12 w-10 h-8 bg-red-500 rounded-lg text-white font-bold sm:text-lg border-2 border-solid border-black mx-0.5 select-none hover:bg-red-600 active:bg-red-800"
-        >
+        <button (click)="editTask(task)"
+          class="sm:w-12 w-10 h-8 bg-red-500 rounded-lg text-white font-bold sm:text-lg border-2 border-solid border-black mx-0.5 select-none hover:bg-red-600 active:bg-red-800">
           編輯
         </button>
         }@else {
-        <button
-          (click)="saveTask(task)"
-          class="sm:w-12 w-10 h-8 bg-red-500 rounded-lg text-white font-bold sm:text-lg border-2 border-solid border-black mx-0.5 select-none hover:bg-red-600 active:bg-red-800"
-        >
+        <button (click)="saveTask(task)"
+          class="sm:w-12 w-10 h-8 bg-red-500 rounded-lg text-white font-bold sm:text-lg border-2 border-solid border-black mx-0.5 select-none hover:bg-red-600 active:bg-red-800">
           保存
         </button>
         }
-        <button
-          (click)="deleteTask(task.id)"
-          class="sm:w-12 w-10 h-8 bg-red-500 rounded-lg text-white font-bold sm:text-lg border-2 border-solid border-black mx-0.5 select-none hover:bg-red-600 active:bg-red-800"
-        >
+        <button (click)="deleteTask(task.id)"
+          class="sm:w-12 w-10 h-8 bg-red-500 rounded-lg text-white font-bold sm:text-lg border-2 border-solid border-black mx-0.5 select-none hover:bg-red-600 active:bg-red-800">
           刪除
         </button>
       </div>
