@@ -11,13 +11,14 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './main.component.scss',
 })
 export class MainComponent implements OnInit {
+  // 注入todoService
   constructor(private todoService: TodoService) {}
-
+  // 定義編輯中的待辦事項名稱
   editTaskName: string = '';
-
+  // 定義目前選擇的狀態
   todoState: string = 'all';
-
-  get todoList() {
+  // 回傳當前的todoList
+  get todoList(): Todo[] {
     if (this.todoService.keyWord === '') {
       if (this.todoService.taskState === 'all') {
         return this.todoService.todoList;
@@ -45,15 +46,15 @@ export class MainComponent implements OnInit {
       }
     }
   }
-
-  saveTask(task: Todo) {
+  // 儲存編輯中的待辦事項
+  saveTask(task: Todo): void {
     task.taskName = this.editTaskName;
     this.editTaskName = '';
     task.isEdit = false;
     this.todoService.saveToStorage();
   }
-
-  editTask(task: Todo) {
+  // 編輯待辦事項
+  editTask(task: Todo): void {
     if (this.todoService.todoList.some((task) => task.isEdit)) {
       alert('有待辦事項尚未保存，請先完成編輯');
       return;
@@ -61,17 +62,17 @@ export class MainComponent implements OnInit {
     task.isEdit = true;
     this.editTaskName = task.taskName;
   }
-
-  deleteTask(id: number) {
+  // 刪除待辦事項
+  deleteTask(id: number): void {
     this.todoService.deleteTask(id);
     this.todoService.todoList = this.todoService.loadFromStorage();
   }
-
-  changeTodoState(state: string) {
+  // 改變目前選擇要觀看的代辦事項狀態
+  changeTodoState(state: string): void {
     this.todoState = state;
     this.todoService.taskState = state;
   }
-
+  // 刷新時獲取代辦事項資料
   ngOnInit(): void {
     this.todoService.todoList = this.todoService.loadFromStorage();
   }
