@@ -18,12 +18,31 @@ export class MainComponent implements OnInit {
   todoState: string = 'all';
 
   get todoList() {
-    if (this.todoService.taskState === 'all') {
-      return this.todoService.todoList;
-    } else if (this.todoService.taskState === 'unDone') {
-      return this.todoService.todoList.filter((task) => !task.isCompleted);
+    if (this.todoService.keyWord === '') {
+      if (this.todoService.taskState === 'all') {
+        return this.todoService.todoList;
+      } else if (this.todoService.taskState === 'unDone') {
+        return this.todoService.todoList.filter((task) => !task.isCompleted);
+      } else {
+        return this.todoService.todoList.filter((task) => task.isCompleted);
+      }
     } else {
-      return this.todoService.todoList.filter((task) => task.isCompleted);
+      if (this.todoService.taskState === 'all') {
+        return this.todoService.todoList.filter((task) =>
+          task.taskName.includes(this.todoService.keyWord)
+        );
+      } else if (this.todoService.taskState === 'unDone') {
+        return this.todoService.todoList.filter(
+          (task) =>
+            !task.isCompleted &&
+            task.taskName.includes(this.todoService.keyWord)
+        );
+      } else {
+        return this.todoService.todoList.filter(
+          (task) =>
+            task.isCompleted && task.taskName.includes(this.todoService.keyWord)
+        );
+      }
     }
   }
 

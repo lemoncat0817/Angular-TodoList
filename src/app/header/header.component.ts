@@ -13,7 +13,9 @@ export class HeaderComponent {
   constructor(private todoService: TodoService) {}
   task: string = '';
 
-  keyWord: string = '';
+  set keyWord(newValue: string) {
+    this.todoService.keyWord = newValue;
+  }
 
   get todoListCount(): number {
     return this.todoService.todoList.length;
