@@ -1,27 +1,49 @@
-# TodoApp
+# Todo APP
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.1.0.
+這是一個使用 Angular、TypeScript 構建的代辦事項清單網站，使用 TailWind CSS 編寫樣式，網站有使用 RWD 響應式設計可支援最小螢幕寬度 320px。
 
-## Development server
+# Demo 網站
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+https://lemoncat0817.github.io/Angular-TodoList/
 
-## Code scaffolding
+# 功能特色
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+1.基本的增、刪、改、查代辦事項功能
 
-## Build
+2.分類未完成、已完成的代辦事項
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+3.一鍵清除所有完成代辦事項
 
-## Running unit tests
+4.一鍵全選/全取消
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+# 使用的技術
 
-## Running end-to-end tests
+1.框架採用 Angular 。
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+2.利用 service 進行狀態管理。
 
-## Further help
+3.使用 Tailwind CSS 進行樣式設計。
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+4.使用 RWD 響應式設計 可使用於不同螢幕寬度，最小支援寬度為 320px。
+
+# 安裝與運行
+
+確保你已安裝了 Node.js 和 npm。
+
+# 安裝依賴
+
+```sh
+npm install
+```
+
+# 開發模式啟動服務器
+
+```sh
+ng serve
+```
+
+# 生產模式構建
+
+```sh
+ng build
+```
