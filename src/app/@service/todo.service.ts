@@ -9,7 +9,7 @@ export class TodoService {
   isEdit: boolean = false;
   todoList: Todo[] = [];
   pages: number = 0;
-  isSearch: boolean = false;
+  mode: string = 'add';
   keyword: string = '';
   taskState: string = 'all';
 
