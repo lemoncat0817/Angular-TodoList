@@ -12,17 +12,28 @@ export class TodoService {
   isSearch: boolean = false;
   keyword: string = '';
 
+  private isBrowser(): boolean {
+    return (
+      typeof window !== 'undefined' &&
+      typeof window.localStorage !== 'undefined'
+    );
+  }
+
   deleteTask(id: number) {
     this.todoList = this.todoList.filter((todo) => todo.id !== id);
     this.saveToStorage();
   }
 
   saveToStorage() {
-    localStorage.setItem('todoList', JSON.stringify(this.todoList));
+    if (this.isBrowser()) {
+      localStorage.setItem('todoList', JSON.stringify(this.todoList));
+    }
   }
 
   loadFromStorage() {
-    this.todoList = JSON.parse(localStorage.getItem('todoList') || '[]');
+    if (this.isBrowser()) {
+      this.todoList = JSON.parse(localStorage.getItem('todoList') || '[]');
+    }
     return this.todoList;
   }
 }
