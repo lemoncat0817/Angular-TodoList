@@ -16,6 +16,8 @@ export class MainComponent implements OnInit {
 
   editTaskName: string = '';
 
+  todoState: string = 'all';
+
   saveTask(task: Todo) {
     task.taskName = this.editTaskName;
     this.editTaskName = '';
@@ -35,6 +37,22 @@ export class MainComponent implements OnInit {
   deleteTask(id: number) {
     this.todoService.deleteTask(id);
     this.todoList = this.todoService.loadFromStorage();
+  }
+
+  changeTodoState(state: string) {
+    this.todoState = state;
+    this.todoService.taskState = state;
+    this.differentStateTodoList();
+  }
+
+  differentStateTodoList(): Todo[] {
+    if (this.todoService.taskState === 'all') {
+      return this.todoList;
+    } else if (this.todoService.taskState === 'unDone') {
+      return this.todoList.filter((task) => !task.isCompleted);
+    } else {
+      return this.todoList.filter((task) => task.isCompleted);
+    }
   }
 
   ngOnInit(): void {

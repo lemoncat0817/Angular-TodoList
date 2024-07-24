@@ -11,6 +11,7 @@ export class TodoService {
   pages: number = 0;
   isSearch: boolean = false;
   keyword: string = '';
+  taskState: string = 'all';
 
   private isBrowser(): boolean {
     return (
