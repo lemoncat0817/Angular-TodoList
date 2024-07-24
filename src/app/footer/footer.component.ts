@@ -19,4 +19,10 @@ export class FooterComponent {
   get completeTaskCount() {
     return this.todoService.todoList.filter((task) => task.isCompleted).length;
   }
+
+  clearCompleteTask() {
+    this.todoService.todoList = this.todoService.todoList.filter(
+      (task) => !task.isCompleted
+    );
+  }
 }
