@@ -12,11 +12,20 @@ import { FormsModule } from '@angular/forms';
 })
 export class MainComponent implements OnInit {
   constructor(private todoService: TodoService) {}
-  todoList: Todo[] = [];
 
   editTaskName: string = '';
 
   todoState: string = 'all';
+
+  get todoList() {
+    if (this.todoService.taskState === 'all') {
+      return this.todoService.todoList;
+    } else if (this.todoService.taskState === 'unDone') {
+      return this.todoService.todoList.filter((task) => !task.isCompleted);
+    } else {
+      return this.todoService.todoList.filter((task) => task.isCompleted);
+    }
+  }
 
   saveTask(task: Todo) {
     task.taskName = this.editTaskName;
@@ -36,26 +45,15 @@ export class MainComponent implements OnInit {
 
   deleteTask(id: number) {
     this.todoService.deleteTask(id);
-    this.todoList = this.todoService.loadFromStorage();
+    this.todoService.todoList = this.todoService.loadFromStorage();
   }
 
   changeTodoState(state: string) {
     this.todoState = state;
     this.todoService.taskState = state;
-    this.differentStateTodoList();
-  }
-
-  differentStateTodoList(): Todo[] {
-    if (this.todoService.taskState === 'all') {
-      return this.todoList;
-    } else if (this.todoService.taskState === 'unDone') {
-      return this.todoList.filter((task) => !task.isCompleted);
-    } else {
-      return this.todoList.filter((task) => task.isCompleted);
-    }
   }
 
   ngOnInit(): void {
-    this.todoList = this.todoService.loadFromStorage();
+    this.todoService.todoList = this.todoService.loadFromStorage();
   }
 }

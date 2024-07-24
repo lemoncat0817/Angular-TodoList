@@ -21,8 +21,6 @@ export class FooterComponent {
   }
 
   clearCompleteTask() {
-    this.todoService.todoList = this.todoService.todoList.filter(
-      (task) => !task.isCompleted
-    );
+    this.todoService.clearCompleteTask();
   }
 }

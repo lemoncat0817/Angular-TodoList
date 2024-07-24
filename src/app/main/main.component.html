@@ -17,7 +17,7 @@
     </div>
   </div>
   <div class="w-4/5 h-[400px] m-auto overflow-y-auto">
-    @for( task of differentStateTodoList(); track task.id){
+    @for( task of todoList; track task.id){
     <div
       class="w-full bg-gray-300 border-2 border-white border-solid rounded-lg p-2 mb-2 flex justify-between items-center">
       <input [(ngModel)]="task.isCompleted" type="checkbox" class="w-6 h-6 cursor-pointer" />

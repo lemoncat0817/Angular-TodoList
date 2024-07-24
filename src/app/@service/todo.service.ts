@@ -25,6 +25,11 @@ export class TodoService {
     this.saveToStorage();
   }
 
+  clearCompleteTask() {
+    this.todoList = this.todoList.filter((task) => !task.isCompleted);
+    this.saveToStorage();
+  }
+
   saveToStorage() {
     if (this.isBrowser()) {
       localStorage.setItem('todoList', JSON.stringify(this.todoList));
