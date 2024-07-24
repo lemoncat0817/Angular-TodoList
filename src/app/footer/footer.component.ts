@@ -10,4 +10,13 @@ import { Component } from '@angular/core';
 })
 export class FooterComponent {
   constructor(private todoService: TodoService) {}
+  get allTaskCount() {
+    return this.todoService.todoList.length;
+  }
+  get noDoneTaskCount() {
+    return this.todoService.todoList.filter((task) => !task.isCompleted).length;
+  }
+  get completeTaskCount() {
+    return this.todoService.todoList.filter((task) => task.isCompleted).length;
+  }
 }

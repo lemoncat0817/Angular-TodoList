@@ -1,24 +1,17 @@
 <div class="w-full h-[100px] flex items-center justify-around">
   <div class="sm:w-[400px] h-[100px] sm:flex items-center justify-around">
-    <div
-      class="bg-blue-500 border-2 border-solid border-black rounded-lg px-2 text-white font-bold text-lg mt-2"
-    >
-      全部:
+    <div class="bg-blue-500 border-2 border-solid border-black rounded-lg px-2 text-white font-bold text-lg mt-2">
+      全部: {{allTaskCount}}
     </div>
-    <div
-      class="bg-blue-500 border-2 border-solid border-black rounded-lg px-2 text-white font-bold text-lg mt-2"
-    >
-      未完成:
+    <div class="bg-blue-500 border-2 border-solid border-black rounded-lg px-2 text-white font-bold text-lg mt-2">
+      未完成: {{noDoneTaskCount}}
     </div>
-    <div
-      class="bg-blue-500 border-2 border-solid border-black rounded-lg px-2 text-white font-bold text-lg mt-2"
-    >
-      已完成:
+    <div class="bg-blue-500 border-2 border-solid border-black rounded-lg px-2 text-white font-bold text-lg mt-2">
+      已完成: {{completeTaskCount}}
     </div>
   </div>
   <button
-    class="bg-blue-800 border-2 border-solid border-black rounded-lg px-2 text-white font-bold text-lg select-none hover:bg-blue-700 active:bg-blue-900"
-  >
+    class="bg-blue-800 border-2 border-solid border-black rounded-lg px-2 text-white font-bold text-lg select-none hover:bg-blue-700 active:bg-blue-900">
     清除已完成代辦事項
   </button>
 </div>
